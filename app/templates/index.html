@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="display-4">Flask APP</h1>
+    <p class="lead text-muted">Authentication application for users</p>
+    <hr />
+    <div class="d-flex ">
+        <a class="btn btn-dark me-2" href="/auth/register">Register</a>
+        <a class="btn btn-outline-primary" href="/auth/login">Login</a>
+    </div>
+</div>
+{% endblock %}
