@@ -39,12 +39,18 @@
                                 aria-expanded="false">
                                 Account
                             </a>
+                            {% if user %}
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/auth/logout">logout</a></li>
+                            </ul>
+                            {% else %}
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="/register">Register</a>
+                                    <a class="dropdown-item" href="/auth/register">Register</a>
                                 </li>
-                                <li><a class="dropdown-item" href="/login">Login</a></li>
+                                <li><a class="dropdown-item" href="/auth/login">Login</a></li>
                             </ul>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>

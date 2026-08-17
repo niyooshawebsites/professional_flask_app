@@ -6,8 +6,11 @@ Login
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-between align-items-center">
-    <form class="card w-50 p-4 bg-light rounded-lg" action="/login" method="POST">
+    <form class="card w-50 p-4 bg-light rounded-lg" action="/auth/login" method="POST">
         <h2 class="text-primary text-center mb-4">Login</h2>
+        {# csrf token #}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
         <div class="form-group mb-3">
             <label for="email" class="text-sm text-muted mb-1">Email</label>
             <input type="email" name="email" id="email" placeholder="john@example.com" required class="form-control" />
@@ -30,7 +33,7 @@ Login
 
         <hr />
         <p class="text-center">
-            Don't have an account? <a href="/register">Register</a>
+            Don't have an account? <a href="/auth/register">Register</a>
         </p>
     </form>
 </div>

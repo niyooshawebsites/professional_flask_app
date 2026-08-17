@@ -7,7 +7,7 @@ from app.services.auth_service import register_user
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 # register route
-@auth_bp.route("/auth/register", methods=["GET", "POST"])
+@auth_bp.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         username = request.form.get("username", "").strip()
@@ -24,7 +24,7 @@ def register():
     return render_template('register.html')
 
 # login route
-@auth_bp.route("/auth/login", methods=["GET", "POST"])
+@auth_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("email", "").strip()
@@ -33,7 +33,7 @@ def login():
         if not email or not password:
             return render_template("login.html", msg="Please enter email and password.")
         
-        user = User.query.filter(email=email).first()
+        user = User.query.filter(User.email == email).first()
         
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
